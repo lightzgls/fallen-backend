@@ -21,23 +21,23 @@ Cần Node.js 22, npm và Java 21 trở lên. Kiểm tra cuối chạy trên Nod
 
 ```powershell
 npm ci
-Copy-Item admin-web/.env.example admin-web/.env.local
+npm run start:local
 ```
 
-Terminal 1 tại repo:
-
-```powershell
-. ./tools/emulator-env.ps1
-npm run emulators
-```
-
-Terminal 2:
+Script tạo `admin-web/.env.local` từ cấu hình mẫu nếu file chưa có, rồi chạy
+Firebase Emulator và web admin. Khi script báo server đã sẵn sàng, mở một
+terminal khác tại repo để nạp dữ liệu và tài khoản demo.
 
 ```powershell
 . ./tools/emulator-env.ps1
 npm run seed
-npm run dev
 ```
+
+Nếu muốn mở cả app Android, bật emulator Android hoặc kết nối thiết bị đã bật
+USB debugging, rồi chạy `npm.cmd run start:local -- -Mobile` thay cho lệnh trên.
+Script tự nạp dữ liệu demo, cấu hình `adb reverse`, rồi build, cài và mở app
+debug. Nếu có nhiều thiết bị, thêm `-Serial emulator-5554` với serial tương ứng.
+Giữ terminal này mở khi dùng app.
 
 Seed nạp 50 mục từ Anh–Việt tự soạn từ `tools/dictionary/sample-dictionary.json`.
 Cùng nguồn này được dùng để tạo dữ liệu tra cứu có sẵn trên Android bằng
