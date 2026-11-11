@@ -19,23 +19,23 @@ Cần Node.js 22, npm và Java 21 trở lên. Kiểm tra cuối chạy trên Nod
 
 ```powershell
 npm ci
-Copy-Item admin-web/.env.example admin-web/.env.local
+npm run start:local
 ```
 
-Terminal 1 tại repo:
-
-```powershell
-. ./tools/emulator-env.ps1
-npm run emulators
-```
-
-Terminal 2:
+Script tạo `admin-web/.env.local` từ cấu hình mẫu nếu file chưa có, rồi chạy
+Firebase Emulator và web admin. Khi script báo server đã sẵn sàng, mở một
+terminal khác tại repo để nạp dữ liệu và tài khoản demo.
 
 ```powershell
 . ./tools/emulator-env.ps1
 npm run seed
-npm run dev
 ```
+
+Nếu muốn mở cả app Android, bật emulator Android hoặc kết nối thiết bị đã bật
+USB debugging, rồi chạy `npm.cmd run start:local -- -Mobile` thay cho lệnh trên.
+Script tự nạp dữ liệu demo, cấu hình `adb reverse`, rồi build, cài và mở app
+debug. Nếu có nhiều thiết bị, thêm `-Serial emulator-5554` với serial tương ứng.
+Giữ terminal này mở khi dùng app.
 
 Mở [admin local](http://127.0.0.1:5173) và [Emulator UI](http://127.0.0.1:4000). Seed chạy lặp an toàn trong `demo-fallen`, không reset dữ liệu đã sửa. Tài khoản admin: `admin@fallen.local`; learner: `learner@fallen.local`; mật khẩu thử **chỉ trên emulator**: `Local-demo-2026!`. Có thể đặt `SEED_PASSWORD`, `SEED_ADMIN_EMAIL`, `SEED_LEARNER_EMAIL` trước seed. Không dùng các giá trị này cho môi trường thật.
 

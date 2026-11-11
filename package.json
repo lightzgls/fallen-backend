@@ -11,6 +11,7 @@
     "typecheck": "npm run typecheck -w functions && npm run typecheck -w admin-web && tsc -p tsconfig.tools.json",
     "test": "vitest run",
     "dev": "npm run dev -w admin-web",
+    "start:local": "powershell -NoProfile -ExecutionPolicy Bypass -File tools/start-local.ps1",
     "emulators": "npm run build -w functions && firebase emulators:start --project demo-fallen",
     "seed": "tsx tools/seed.ts",
     "test:emulator": "firebase emulators:exec --project demo-fallen --only auth,firestore,storage \"vitest run --config vitest.emulator.config.ts\"",
