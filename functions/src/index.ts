@@ -1,3 +1,4 @@
+export { getPublicDeckSource, getPublicImageAsset, importGuestProgress } from "./routes/guest.js";
 /** Firebase discovers only public endpoints and jobs re-exported here. */
 export {
   ensureProfile,
